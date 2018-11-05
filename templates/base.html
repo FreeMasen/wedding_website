@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <meta name="description" content="Information about Beth Ashton and Robert Masen getting married!" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <meta charset="utf-8" />
+            <base href="/" />
+            <!-- <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+            <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+            <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+            <meta name="msapplication-TileColor" content="#0E2B5E" />
+            <link type="text/plain" rel="author" href="/humans.txt" /> -->
+        <link href="/main.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <header>
+            <h1 id="banner">
+                Masen + Ashton
+            </h1>
+            <nav>
+                    <a href="/" class="nav-button" id="home-button">Home</a>
+                    <a href="/pages/details/index.html" class="nav-button" id="details-button">Event Details</a>
+                    <a href="/pages/rsvp/index.html" class="nav-button" id="rsvp-button">RSVP</a>
+            </nav>
+        </header>
+        <main>
+            {% block content %} {% endblock content %}
+        </main>
+        <script>
+            window.addEventListener('DOMContentLoaded', function() {
+                setSelected();
+            });
+
+            function setSelected() {
+                let id = getSelectedId();
+                let button = document.getElementById(id);
+                if (!button) return console.error('Unable to find selected button');
+                addClass('selected', button);
+            }
+
+            function getSelectedId() {
+                switch (location.pathname) {
+                    case '/pages/details/index.html':
+                    case '/pages/details/index.html/':
+                        return 'details-button';
+                    case '/pages/details/index.html':
+                    case '/pages/details/index.html/':
+                        return 'rsvp-button';
+                    case '/pages/index.html':
+                    case '/pages/index.html/':
+                        return 'home-button';
+                    default:
+                        throw new Error('Unable to determine selected ' + location.pathname);
+                }
+            }
+
+            function addClass(name, el) {
+                console.log('addClass', name, el);
+                let current = el.getAttribute('class');
+                let split = current.split(' ');
+                if (split.indexOf(name) < 0) {
+                    split.push(name);
+                    let newValue = split.join(' ');
+                    el.setAttribute('class', newValue);
+                }
+            }
+        </script>
+    </body>
+</html>

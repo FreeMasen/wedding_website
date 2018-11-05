@@ -1,0 +1,143 @@
+@import 'colors';
+$normal-height: calc(-206px + 100vh);
+$mobile-height: calc(-144px + 100vh);
+@font-face {
+        font-family: 'Sacramento';
+        font-style: normal;
+        font-weight: 400;
+        src: url(fonts/Sacramento-Regular.ttf);
+}
+
+html, body {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    width: 100%;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+
+h1 {
+    font-family: Sacramento;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    padding-top: 10px;
+    background: $primary;
+    color: $accent;
+    font-family: Sacramento;
+    #banner {
+        font-size: 60pt;
+        width: 100%;
+        display: block;
+        text-align: center;
+        font-family: Sacramento;
+    }
+    nav {
+        border-top: 1px solid $black;
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        .nav-button {
+            font-size: 24pt;
+            padding: 10px 20px;
+            margin: 5px;
+            color: $accent;
+            display: block;
+            text-decoration: none;
+            background: none;
+            border: none;
+            font-family: Sacramento;
+            &:hover {
+                color: lighten($black, 20%);
+            }
+            &.selected {
+                font-weight: bold;
+                text-decoration: underline;
+            }
+        }
+    }
+}
+main {
+    background: $black;
+    height: calc(100% - 152px);
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+    #jumbotron {
+        height: $normal-height;
+        background-image: url('images/steel-wall.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+        text-align: center;
+        span {
+            font-size: 60pt;
+            font-family: Sacramento;
+            color: $primary;
+            font-weight: bold;
+            display: block;
+            padding-top: 46vh;
+        }
+    }
+    article {
+        overflow: scroll;
+        padding: 10px 5px;
+        color: $accent;
+        background: $black;
+        text-align: center;
+        margin: auto;
+        min-height: $normal-height;
+        iframe {
+            max-width: 75vw;
+            max-height: 75vw;
+        }
+        h2 {
+            margin: 0;
+            margin-bottom: 5px;
+            font-size: 24pt;
+        }
+        h3 {
+            margin: 0;
+            font-size: 18pt;
+        }
+        hr {
+            margin: 0;
+            margin-bottom: 5px;
+            border: 0.5px solid $accent;
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    header {
+        #banner {
+            font-size: 40pt;
+        }
+        nav {
+            .nav-button {
+                font-size: 18pt;
+                padding: 5px 10px;
+            }
+        }
+    }
+    main {
+        #jumbotron {
+            height: $mobile-height;
+            span {
+                font-size: 40pt;
+            }
+        }
+    }
+}
