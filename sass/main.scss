@@ -135,8 +135,10 @@ main {
     main {
         #jumbotron {
             height: $mobile-height;
+            background-size: auto 100vh;
             span {
                 font-size: 40pt;
+                padding-top: 0;
             }
         }
     }
