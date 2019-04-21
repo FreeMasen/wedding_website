@@ -1,0 +1,94 @@
+@import 'colors';
+
+#bbq-rsvp-form {
+    display: grid;
+    grid-template-columns: 150px 150px;
+    grid-template-rows: 50px 50px auto 150px 50px;
+    grid-template-areas: 
+        'first-name last-name'
+        'regrets    party-size'
+        'guests     guests'
+        'diet       diet'
+        'buttons    buttons';
+    .input-group {
+        &.text,
+        &.number {
+            display: flex;
+            flex-flow: column;
+            justify-content: flex-start;
+            align-items: center;
+            align-content: center;
+        }
+        &.number {
+            input {
+                width: 75px;
+            }
+        }
+        &.checkbox {
+            display: flex;
+            flex-flow: row;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+        }
+    }
+    #first-name-group {
+        grid-area: first-name;
+    }
+    #last-name-group {
+        grid-area: last-name;
+    }
+    #regrets-group {
+        grid-area: regrets;
+    }
+    #add-guest-button {
+        grid-area: party-size;
+    }
+    #guest-list {
+        grid-area: guests;
+        display: flex;
+        flex-flow: column;
+        justify-content: flex-start;
+        align-items: center;
+        align-content: center;
+        width: 100%;
+        padding-bottom: 15px;
+        .input-group {
+            .guest-name-input {
+                margin-bottom: 5px;
+            }
+        }
+    }
+    #diet-group {
+        grid-area: diet;
+        textarea {
+            height: calc(100% - 17px);
+            width: 300px;
+        }
+    }
+    .button-group {
+        grid-area: buttons;
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        button {
+            width: 45%;
+            height: 50px;
+            border: none;
+            font-size: 14pt;
+            background-color: $accent;
+            color: $primary;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px 1px rgba(255,255,255,0.25);
+            &:hover {
+                color: $black;
+            }
+            &:active {
+                transform: translate(1px, 1px);
+                box-shadow: 0px #000;
+            }
+        }
+
+    }
+}
+

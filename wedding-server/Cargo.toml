@@ -1,0 +1,13 @@
+[package]
+name = "wedding-server"
+version = "0.1.0"
+authors = ["rfm <r@robertmasen.pizza>"]
+edition = "2018"
+
+[dependencies]
+warp = "0.1"
+serde_derive = "1"
+serde = "1"
+pretty_env_logger = "0.3"
+postgres = "0.15"
+urlencoding = "1.0.0"

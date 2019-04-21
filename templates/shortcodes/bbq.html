@@ -1,0 +1,33 @@
+
+<form id="bbq-rsvp-form" action="http://localhost:9211/bbq-rsvp" method="POST">
+    <div id="first-name-group" class="input-group text">
+        <label for="first-name">First Name</label>
+        <input id="first-name" name="first-name" type="text" required />
+    </div>
+    <div id="last-name-group" class="input-group text">
+        <label for="last-name">Last Name</label>
+        <input id="last-name" name="last-name" type="text" required />
+    </div>
+    <div id="regrets-group" class="input-group checkbox">
+        <label for="regrets">I can't make it</label>
+        <input id="regrets" name="regrets" type="checkbox" />
+    </div>
+    <button id="add-guest-button" type="button">
+        Add Guest
+    </button>
+    <div id="guest-list">
+    </div>
+<!--     
+    <div id="party-size-group" class="input-group number">
+        <label for="party-size">Party Size</label>
+        <input id="party-size" name="party-size" type="number" min="1" value="1" required />
+    </div> -->
+    <div id="diet-group" class="input-group text">
+        <label for="diet">Dietary Restrictions</label>
+        <textarea id="diet" name="diet" type="text"></textarea>
+    </div>
+    <div class="button-group">
+        <button type="reset">Reset</button>
+        <button type="submit">RSVP</button>
+    </div>
+</form>
