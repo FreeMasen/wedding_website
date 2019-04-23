@@ -28,7 +28,7 @@
             let party = '';
             let partySize = parseInt(rsvp.party_size);
             if (partySize > 0) {
-                if (rsvp.party_size === 1) {
+                if (partySize === 1) {
                     party = ' and bringing one person';
                 } else {
                     party = ` and bringing ${rsvp.party_size} people`
