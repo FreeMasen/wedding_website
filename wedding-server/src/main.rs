@@ -113,7 +113,9 @@ impl BbqRsvp {
                 ("first-name", value) => first_name = Some(value),
                 ("last-name", value) => last_name = Some(value),
                 ("regrets", value) => regrets = value == "on",
-                ("guest-name[]", value) => guest_name.push(value),
+                ("guest-name[]", value) => if value != "" {
+                    guest_name.push(value)
+                },
                 ("diet", value) => diet = value,
                 _ => (),
             }

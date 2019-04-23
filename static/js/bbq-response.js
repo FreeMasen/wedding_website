@@ -25,7 +25,16 @@
         if (rsvp.regrets && rsvp.regrets > 0) {
             attending = 'not coming... we\'ll miss you';
         } else {
-            attending = `coming with ${rsvp.party_size || 0} people`;
+            let party = '';
+            let partySize = parseInt(rsvp.party_size);
+            if (partySize > 0) {
+                if (rsvp.party_size === 1) {
+                    party = ' and bringing one person';
+                } else {
+                    party = ` and bringing ${rsvp.party_size} people`
+                }
+            }
+            attending = `coming${party}`;
         }
         message.appendChild(document.createTextNode(`We got ${rsvp.first_name} ${rsvp.last_name} down as ${attending}!`));
         container.appendChild(message);

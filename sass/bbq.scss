@@ -1,9 +1,10 @@
 @import 'colors';
 
 #bbq-rsvp-form {
+    margin-top: 15px;
     display: grid;
     grid-template-columns: 150px 150px;
-    grid-template-rows: 50px 50px auto 150px 50px;
+    grid-template-rows: 50px 50px auto 125px 50px;
     grid-template-areas: 
         'first-name last-name'
         'regrets    party-size'
@@ -61,6 +62,7 @@
     }
     #diet-group {
         grid-area: diet;
+        padding-bottom: 5px;
         textarea {
             height: calc(100% - 17px);
             width: 300px;
@@ -73,22 +75,23 @@
         justify-content: space-between;
         button {
             width: 45%;
-            height: 50px;
-            border: none;
-            font-size: 14pt;
-            background-color: $accent;
-            color: $primary;
-            border-radius: 5px;
-            box-shadow: 1px 1px 1px 1px rgba(255,255,255,0.25);
-            &:hover {
-                color: $black;
-            }
-            &:active {
-                transform: translate(1px, 1px);
-                box-shadow: 0px #000;
-            }
         }
-
+    }
+    button {
+        height: 50px;
+        border: none;
+        font-size: 14pt;
+        background-color: $accent;
+        color: $primary;
+        border-radius: 5px;
+        box-shadow: 1px 1px 1px 1px rgba(255,255,255,0.25);
+        &:hover {
+            color: $black;
+        }
+        &:active {
+            transform: translate(1px, 1px);
+            box-shadow: 0px #000;
+        }
     }
 }
 
