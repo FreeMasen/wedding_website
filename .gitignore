@@ -2,3 +2,4 @@
 .vscode/
 public/
 **/target/
+**/sql_conn
