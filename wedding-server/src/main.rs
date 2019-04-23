@@ -5,37 +5,31 @@ use postgres::{
 use warp::{
     Filter,
     post2,
-    get2,
     body::form,
     path,
     Reply,
-    cors,
+    log,
     http::Response,
     header,
     fs::dir,
-    any,
 };
 
 static CONNECTION_STRING: &str = include_str!("sql_conn");
 
 fn main() {
     pretty_env_logger::init();
-    println!("attempting to connect with {:?}", CONNECTION_STRING);
-    Connection::connect(CONNECTION_STRING, TlsMode::None).unwrap();
     let bbq_rsvp = post2()
         .and(path("bbq-rsvp"))
         .and(header::<String>("referer"))
         .and(form())
         .map(rsvp_bbq);
-    let c = cors().allow_origin("http://localhost:1111").allow_methods(vec!["POST"]);
-    warp::serve(bbq_rsvp.or(dir("public")).with(c))
-        .run(([127, 0, 0, 1], 9211))
+    warp::serve(bbq_rsvp.or(dir("public")).with(log("mashton.party")))
+        .run(([127, 0, 0, 1], 9211));
 }
 
 
 
 fn rsvp_bbq(referer: String, rsvp: Vec<(String, String)>) -> impl Reply {
-    println!("{:#?}", rsvp);
     let rsvp = match BbqRsvp::from(rsvp) {
         Ok(rsvp) => rsvp,
         Err(e) => return redirect(&format!("{}/error?reason={}", referer, e)),
@@ -61,8 +55,7 @@ fn redirect(location: &str) -> impl Reply {
 }
 
 fn insert_bbq_rsvp(rsvp: &BbqRsvp) -> Result<(), String> {
-    println!("{:?}", rsvp);
-    let conn = Connection::connect(CONNECTION_STRING, TlsMode::None).map_err(|e| format!("Failed to connect to db {}", e))?;
+    let conn = Connection::connect(CONNECTION_STRING.trim(), TlsMode::None).map_err(|e| format!("Failed to connect to db {}", e))?;
     let trans = conn.transaction().map_err(|e| format!("Unable to open transaction {}", e))?;
     let rows = trans.query(
         "SELECT new_rsvp FROM new_rsvp($1, $2, $3, $4)", 
