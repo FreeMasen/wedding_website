@@ -5,12 +5,15 @@ use postgres::{
 use warp::{
     Filter,
     post2,
+    get2,
     body::form,
     path,
     Reply,
     cors,
     http::Response,
     header,
+    fs::dir,
+    any,
 };
 
 static CONNECTION_STRING: &str = include_str!("sql_conn");
@@ -25,7 +28,7 @@ fn main() {
         .and(form())
         .map(rsvp_bbq);
     let c = cors().allow_origin("http://localhost:1111").allow_methods(vec!["POST"]);
-    warp::serve(bbq_rsvp.with(c))
+    warp::serve(bbq_rsvp.or(dir("public")).with(c))
         .run(([127, 0, 0, 1], 9211))
 }
 
