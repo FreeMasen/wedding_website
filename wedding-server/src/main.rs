@@ -1,3 +1,5 @@
+#[macro_use]
+extern crate log as _;
 use postgres::{
     Connection,
     TlsMode,
@@ -13,6 +15,7 @@ use warp::{
     header,
     fs::dir,
 };
+
 
 static CONNECTION_STRING: &str = include_str!("sql_conn");
 
@@ -30,10 +33,18 @@ fn main() {
 
 
 fn rsvp_bbq(referer: String, rsvp: Vec<(String, String)>) -> impl Reply {
+    debug!("resp_bbq {}", referer);
     let rsvp = match BbqRsvp::from(rsvp) {
         Ok(rsvp) => rsvp,
         Err(e) => return redirect(&format!("{}/error?reason={}", referer, e)),
     };
+    debug!("\twho: {} {}", rsvp.first_name, rsvp.last_name);
+    debug!("\tplus: {}", rsvp.guest_name
+        .iter()
+        .map(|n| format!("\t{}\n", n))
+        .collect::<String>()
+    );
+    debug!("\tdiet: {}", rsvp.diet);
     let endpoint = match insert_bbq_rsvp(&rsvp) {
         Ok(_) => format!("success?{}", rsvp.as_query_string()),
         Err(e) => format!("error?reason={}", e),
@@ -43,7 +54,7 @@ fn rsvp_bbq(referer: String, rsvp: Vec<(String, String)>) -> impl Reply {
     } else {
         format!("{}/{}", referer, endpoint)
     };
-    println!("redirecting to {}", new_location);
+    debug!("redirecting to {}", new_location);
     redirect(&new_location)
 }
 
@@ -74,6 +85,8 @@ fn insert_bbq_rsvp(rsvp: &BbqRsvp) -> Result<(), String> {
                 format!("Failed on insert of guest {} {}", name, e)
             )?;
     }
+    second_insert.finish()
+        .map_err(|e| format!("failed to finish prepared statement {}", e))?;
     Ok(())
 }
 
