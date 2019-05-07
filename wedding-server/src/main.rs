@@ -88,7 +88,7 @@ fn insert_bbq_rsvp(rsvp: &BbqRsvp) -> Result<(), String> {
     second_insert.finish()
         .map_err(|e| format!("failed to finish prepared statement {}", e))?;
     trans.commit()
-        .map_err(|e| format!("failed to commit transaction {}", e)?;
+        .map_err(|e| format!("failed to commit transaction {}", e))?;
     Ok(())
 }
 
