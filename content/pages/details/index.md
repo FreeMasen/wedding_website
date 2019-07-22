@@ -28,4 +28,3 @@
 Minneapolis, MN 55413
 
 <iframe id="map-frame" src="https://www.google.com/maps/d/u/0/embed?mid=12JssiKF4I8SfVtyE5acDZAUGH9sCAVeN&hl=en&ll=45.00181530120901%2C-93.27055989999997&z=19" width="640" height="480"></iframe>
-

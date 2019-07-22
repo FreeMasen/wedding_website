@@ -21,7 +21,7 @@
         <nav>
             <a href="/pages/" class="nav-button" id="home-button">Home</a>
             <a href="/pages/details/index.html" class="nav-button" id="details-button">Event Details</a>
-            <a href="/pages/rsvp/index.html" class="nav-button" id="rsvp-button">RSVP</a>
+            <a href="/pages/mpls/index.html" class="nav-button" id="mpls-button">Minneapolis</a>
             <a target="_blank" rel="noopener noreferrer" href="/gifts" class="nav-button" id="gifts-button">Registry</a>
         </nav>
     </header>
@@ -53,6 +53,9 @@
                 case '/pages/index.html':
                 case '/pages/index.html/':
                     return 'home-button';
+                case '/pages/mpls/index.html':
+                case '/pages/mpls/index.html/':
+                    return 'mpls-button';
                 default:
                     throw new Error('Unable to determine selected ' + location.pathname);
             }

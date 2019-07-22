@@ -30,6 +30,11 @@ h1 {
     margin: 0;
 }
 
+a,
+a:visited {
+    color: $accent;
+}
+
 header {
     padding-top: 10px;
     background: $primary;
@@ -95,7 +100,7 @@ main {
         }
     }
     article {
-        overflow: scroll;
+        overflow: auto;
         padding: 10px 5px;
         color: $accent;
         background: $black;
@@ -119,6 +124,14 @@ main {
             margin: 0;
             margin-bottom: 5px;
             border: 0.5px solid $accent;
+        }
+        ul {
+            text-align: left;
+            font-size: 16pt;
+            list-style: none;
+            li {
+                margin-bottom: 5px;
+            }
         }
     }
 }
