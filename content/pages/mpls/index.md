@@ -5,7 +5,8 @@
 ## Hotels
 * [**Delta Hotels by Marriott**](https://www.marriott.com/reservation/rateListMenu.mi?defaultTab=standard)
   * While further from the action this is probably the most accessible hotel in the area.
-
+* [**Loews Hotel**](https://www.loewshotels.com/minneapolis-hotel)
+  * A nice hotel centrally located in downtown Minneapolis
 ## Things To Do
 * [**Minneapolis Institute of Art**](https://new.artsmia.org/)
   * Free art museum! Open until 9pm on Fridays and 5pm on Saturdays.
