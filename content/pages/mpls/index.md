@@ -3,7 +3,7 @@
 +++
 
 ## Hotels
-* [**Delta Hotels by Marriott**](https://www.marriott.com/reservation/rateListMenu.mi?defaultTab=standard)
+* [**Delta Hotels by Marriott**](https://www.marriott.com/hotels/travel/mspde-delta-hotels-minneapolis-northeast/)
   * While further from the action this is probably the most accessible hotel in the area.
 * [**Loews Hotel**](https://www.loewshotels.com/minneapolis-hotel)
   * A nice hotel centrally located in downtown Minneapolis
